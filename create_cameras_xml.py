@@ -11,14 +11,14 @@ parser.add_argument("date", help="Dataset date.")
 
 args = parser.parse_args()
 
-poses_dir = f'./src/utils/data/{args.date}/pose/survey{args.survey}'
+poses_dir = f'./data/{args.date}/pose/survey{args.survey}'
 poses = os.listdir(poses_dir)
 fastcd_data_dir = f'/home/hdinkel/change_ws/src/fast_change_detection/example/dataset/granite_groundtruth_survey{args.survey}'
 try: os.mkdir(fastcd_data_dir)
 except FileExistsError:
     print(f"{fastcd_data_dir} already exists!")
 
-tree = ET.parse('./src/utils/cameras.xml')
+tree = ET.parse('./cameras.xml')
 root = tree.getroot()
 separator = " "
 
