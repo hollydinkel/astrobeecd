@@ -1,13 +1,12 @@
 #! /usr/bin/env python
 
 import numpy as np
-from pyquaternion import Quaternion
+from quaternion import Quaternion
 import os
 import argparse
 import cv2
 
 # ROS libraries
-from ros_numpy import numpify
 import rosbag
 from cv_bridge import CvBridge
 
@@ -26,11 +25,10 @@ def main():
 
     args = parser.parse_args()
 
-    bag_dir = f"./data/{args.date}/bags/survey{args.survey}"
-    print(bag_dir)
+    bag_dir = f"./data/{args.date}/bags/{args.survey}"
 
-    output_dir = f"./data/{args.date}/bayer/survey{args.survey}"
-    output_dir_poses = f"./data/{args.date}/pose/survey{args.survey}"
+    output_dir = f"./data/{args.date}/bayer/{args.survey}"
+    output_dir_poses = f"./data/{args.date}/pose/{args.survey}"
     try: os.mkdir(output_dir)
     except FileExistsError:
         print(f"{output_dir} already exists!")
@@ -54,9 +52,9 @@ def main():
         data = {'pose': [],
                 'pose_time': [],
                 'image_time': []}
-        for (topic, msg, t) in bag.read_messages(topics=['/ground_truth/gnc/ekf','/hw/cam_nav_bayer']):
+        for (topic, msg, t) in bag.read_messages(topics=['/gnc/ekf','/hw/cam_nav_bayer']):
             
-            if topic == '/ground_truth/gnc/ekf':
+            if topic == '/gnc/ekf':
                 pose = msg.pose
                 trans = np.array([pose.position.x, pose.position.y, pose.position.z])
                 quat_xyzw = [pose.orientation.x,pose.orientation.y,pose.orientation.z,pose.orientation.w]
@@ -68,7 +66,7 @@ def main():
             
             if topic == '/hw/cam_nav_bayer':
                 cv_img = bridge.imgmsg_to_cv2(msg, desired_encoding="passthrough")
-                rgb = cv2.cvtColor(cv_img, cv2.COLOR_BayerGBRG2RGB) 
+                rgb = cv2.cvtColor(cv_img, cv2.COLOR_BayerGR2RGB) 
                 data['image_time'].append(t)
                 cv2.imwrite(os.path.join(output_dir, f"{t}.jpg"), rgb)
 

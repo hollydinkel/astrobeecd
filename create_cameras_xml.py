@@ -2,6 +2,7 @@
 # from xml.dom import minidom
 import xml.etree.ElementTree as ET
 import os
+import shutil
 import argparse
 from numpy import loadtxt
 
@@ -11,12 +12,17 @@ parser.add_argument("date", help="Dataset date.")
 
 args = parser.parse_args()
 
-poses_dir = f'./data/{args.date}/pose/survey{args.survey}'
+images_dir = poses_dir = f'./data/{args.date}/bayer/{args.survey}'
+poses_dir = f'./data/{args.date}/pose/{args.survey}'
 poses = os.listdir(poses_dir)
-fastcd_data_dir = f'/home/hdinkel/change_ws/src/fast_change_detection/example/dataset/granite_groundtruth_survey{args.survey}'
+fastcd_data_dir = f'/home/hollydinkel/change_ws/src/fast_change_detection/example/dataset/granite_{args.survey}'
 try: os.mkdir(fastcd_data_dir)
 except FileExistsError:
     print(f"{fastcd_data_dir} already exists!")
+try: shutil.copytree(images_dir, fastcd_data_dir+'/images')
+except:
+    pass
+
 
 tree = ET.parse('./cameras.xml')
 root = tree.getroot()
