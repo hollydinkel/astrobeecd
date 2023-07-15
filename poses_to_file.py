@@ -22,13 +22,14 @@ def main():
     parser = argparse.ArgumentParser(description="Process sequential poses.")
     parser.add_argument("survey", help="Indicate survey number")
     parser.add_argument("date", help="Dataset date.")
+    parser.add_argument("robot", help="Which robot")
 
     args = parser.parse_args()
 
-    bag_dir = f"./data/{args.date}/bags/{args.survey}"
+    bag_dir = f"./data/{args.date}/{args.robot}/bags/survey{args.survey}"
 
-    output_dir = f"./data/{args.date}/bayer/{args.survey}"
-    output_dir_poses = f"./data/{args.date}/pose/{args.survey}"
+    output_dir = f"./data/{args.date}/{args.robot}/bayer/survey{args.survey}"
+    output_dir_poses = f"./data/{args.date}/{args.robot}/pose/survey{args.survey}"
     try: os.mkdir(output_dir)
     except FileExistsError:
         print(f"{output_dir} already exists!")
@@ -38,10 +39,18 @@ def main():
 
     bridge = CvBridge()
 
-    # # nav_cam_tf = transform(vec3(0.1157+0.002, -0.0422, -0.0826), quat4(-0.46938154, -0.52978318, -0.5317378, -0.46504373))
-    
     body_to_cam_trans = np.array([0.1157+0.002, -0.0422, -0.0826])
-    body_to_cam_quat_xyzw = np.array([-0.46938154, -0.52978318, -0.5317378, -0.46504373])
+
+    if args.robot=="bsharp":
+    # nav_cam_tf = transform(vec3(0.1157+0.002, -0.0422, -0.0826), quat4(-0.46938154, -0.52978318, -0.5317378, -0.46504373))
+        body_to_cam_quat_xyzw = np.array([-0.46938154, -0.52978318, -0.5317378, -0.46504373])
+    elif args.robot=="queen":
+    # nav_cam_transform = transform(vec3(0.1157+0.002, -0.0422, -0.0826), quat4(0.500, 0.500, 0.500, 0.500) ),
+        body_to_cam_quat_xyzw = np.array([0.500, 0.500, 0.500, 0.500])
+    elif args.robot=="bumble":
+    # nav_cam_transform = transform(vec3(0.1157+0.002, -0.0422, -0.0826), quat4(0.500, 0.500, 0.500, 0.500) ),
+        body_to_cam_quat_xyzw = np.array([0.500, 0.500, 0.500, 0.500])
+
     body_to_cam_quat_wxyz = Quaternion(w=body_to_cam_quat_xyzw[3],x=body_to_cam_quat_xyzw[0],y=body_to_cam_quat_xyzw[1],z=body_to_cam_quat_xyzw[2])
     body_to_cam_transf = body_to_cam_quat_wxyz.transformation_matrix
     body_to_cam_transf[0:3,3] = body_to_cam_trans.T
