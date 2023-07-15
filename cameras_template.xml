@@ -1,0 +1,18 @@
+<document version="1.2.0">
+   <chunk>
+      <sensors>
+         <sensor id="0" label="bumble_navcam" type="frame">
+            <resolution width="1280" height="960"/>
+            <property name="pixel_width" value="0.0012841646600024955"/>
+            <property name="pixel_height" value="0.0012841646600024955"/>
+            <property name="focal_length" value="4.1029999999999998"/>
+            <property name="fixed" value="false"/>
+            <calibration type="frame" class="adjusted">
+               <resolution width="1280" height="960"/>
+            </calibration>
+         </sensor>
+      </sensors>
+      <cameras>
+      </cameras>
+   </chunk>
+</document>
