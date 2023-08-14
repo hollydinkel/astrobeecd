@@ -5,19 +5,19 @@
 Install the ![Astrobee flight software](https://github.com/nasa/astrobee). Additional instructions for using the Astrobee flight software with Docker are ![here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Clone this data processing repository into the astrobee flight software repository:
 
 ```bash
-git clone https://github.com/hollydinkel/astrobee_data_processing
+export ASTROBEE_WS=$HOME/astrobee
+cd $ASTROBEE_WS && git clone https://github.com/hollydinkel/astrobee_data_processing
 ```
 
 The steps for creating a dataset to use with Fast Change Detection are included below. The raw data used to create the dataset are ![here](https://drive.google.com/drive/folders/1mBr_7hCGb8cP5V2ny_jZI7lhxymfJc7W?usp=sharing). Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `process.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.
 
 1. Perform initial extraction of images and poses from bag data to folder:
 ```bash
-export ASTROBEE_WS=$HOME/astrobee
 export DATA=$ASTROBEE_WS/src/astrobee_data_processing
 export SURVEY=[survey]
 export DATE=[date]
 export ROBOT=[robot]
-cd $DATA && python3 poses_to_file.py $SURVEY $DATE $ROBOT
+cd $DATA && python3 scripts/poses_to_file.py $SURVEY $DATE $ROBOT
 ```
 
 2. Process sequential images to remove images where frames did not move much between images:
@@ -31,7 +31,7 @@ rosrun sparse_mapping process_sequential_images.py $DATA/data/$DATE/$ROBOT/bayer
 
 ```bash
 cd $DATA
-python3 process_sequential_poses.py $SURVEY $DATE $ROBOT
+python3 scripts/process_sequential_poses.py $SURVEY $DATE $ROBOT
 ```
 
 4. Rename all images in each folder to match what FastCD expects:
@@ -44,7 +44,7 @@ ls -v | nl -v 0 | while read n f; do mv -n "$f" "Image$n.JPG"; done
 
 ```bash
 cd $DATA
-python3 create_cameras_xml.py $SURVEY $DATE $ROBOT
+python3 scripts/create_cameras_xml.py $SURVEY $DATE $ROBOT
 ```
 
 ## **References**
