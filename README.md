@@ -2,7 +2,7 @@
 
 ## Usage
 
-Install the ![Astrobee flight software](https://github.com/nasa/astrobee). Additional instructions for using the Astrobee flight software with Docker are ![here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing) Clone this data processing repository into the astrobee flight software repository:
+Install the ![Astrobee flight software](https://github.com/nasa/astrobee). Additional instructions for using the Astrobee flight software with Docker are ![here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Clone this data processing repository into the astrobee flight software repository:
 
 ```bash
 git clone https://github.com/hollydinkel/astrobee_data_processing

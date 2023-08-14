@@ -21,7 +21,6 @@ def main():
     args = parser.parse_args()
 
     bag_dir = f"./data/{args.date}/{args.robot}/bags/survey{args.survey}"
-    model = f"./data/{args.date}/{args.robot}/model.obj"
     output_dir = f"./data/{args.date}/{args.robot}/plot"
 
     # # nav_cam_tf = transform(vec3(0.1157+0.002, -0.0422, -0.0826), quat4(-0.46938154, -0.52978318, -0.5317378, -0.46504373))
@@ -39,8 +38,13 @@ def main():
         jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
         jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
         jpm_to_world[3,3] = 1
-    else:
+        model = f"./data/models/sim/model.obj"
+    elif args.robot=="bsharp":
         jpm_to_world = np.identity(4)
+        model = f"./data/models/granite/model.obj"
+    elif args.robot=="bumble" or "queen":
+        jpm_to_world = np.identity(4)
+        model = f"./data/models/iss/model.obj"
 
     data = {'pose': [],
             'pose_time': [],
