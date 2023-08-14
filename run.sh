@@ -12,6 +12,6 @@ rm data.zip
 cd $DATA && python3 scripts/poses_to_file.py $SURVEY $DATE $ROBOT
 cd $ASTROBEE_WS && source ../devel/setup.bash
 rosrun sparse_mapping process_sequential_images.py $DATA/data/$DATE/$ROBOT/bayer/survey$SURVEY $ASTROBEE_WS/src/astrobee/config
-
+cd $DATA && python3 scripts/process_sequential_poses.py $SURVEY $DATE $ROBOT
 cd $DATA/data/$DATE/$ROBOT/bayer/survey$SURVEY
 ls -v | nl -v 0 | while read n f; do mv -n "$f" "Image$n.JPG"; done
