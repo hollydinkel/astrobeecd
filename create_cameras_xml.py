@@ -28,6 +28,8 @@ except:
     pass
 
 shutil.copy("cameras_template.xml","cameras.xml")
+# shutil.copy("cameras_template.xml","../")
+# shutil.move("../cameras_template.xml","cameras.xml")
 
 # camera configs
 # bsharp2
@@ -55,6 +57,14 @@ elif args.robot=='queen':
     cy = '509.73835'
     gain=50
     exposure=175
+elif args.robot=='sim':
+    distortion_coeff = 0.9984679695413576
+    fx = '611.0529144295888'
+    cx = '637.9586438046298'
+    fy = '610.213041396481'
+    cy = '558.0507290999258'
+    gain = 0
+    exposure = 160
 
 tree = ET.parse('./cameras.xml')
 root = tree.getroot()

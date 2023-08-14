@@ -1,7 +1,7 @@
 <document version="1.2.0">
    <chunk>
       <sensors>
-         <sensor id="0" label="bumble_navcam" type="frame">
+         <sensor id="0" label="bsharp_navcam" type="frame">
             <resolution width="1280" height="960"/>
             <property name="pixel_width" value="0.0012841646600024955"/>
             <property name="pixel_height" value="0.0012841646600024955"/>

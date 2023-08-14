@@ -16,12 +16,13 @@ def main():
     parser = argparse.ArgumentParser(description="Plot trajectories")
     parser.add_argument("survey", help="Indicate survey number")
     parser.add_argument("date", help="Dataset date.")
+    parser.add_argument("robot", help="Robot name")
 
     args = parser.parse_args()
 
-    bag_dir = f"./data/{args.date}/bags/survey{args.survey}"
-    model = f"./data/{args.date}/model.obj"
-    output_dir = f"./data/{args.date}/plot/survey{args.survey}"
+    bag_dir = f"./data/{args.date}/{args.robot}/bags/survey{args.survey}"
+    model = f"./data/{args.date}/{args.robot}/model.obj"
+    output_dir = f"./data/{args.date}/{args.robot}/plot/survey{args.survey}"
     try: os.mkdir(output_dir)
     except FileExistsError:
         print(f"{output_dir} already exists!")
@@ -33,6 +34,16 @@ def main():
     body_to_cam_quat_wxyz = Quaternion(w=body_to_cam_quat_xyzw[3],x=body_to_cam_quat_xyzw[0],y=body_to_cam_quat_xyzw[1],z=body_to_cam_quat_xyzw[2])
     body_to_cam_transf = body_to_cam_quat_wxyz.transformation_matrix
     body_to_cam_transf[0:3,3] = body_to_cam_trans.T
+
+    if args.robot=="sim":
+        jpm_to_world = np.zeros((4,4))
+        # note: rpy in ROS is ZYX Euler angles representation
+        # jpm_to_world_rpy = np.array([3.1415, 0, -1.570796])
+        jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
+        jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
+        jpm_to_world[3,3] = 1
+    else:
+        jpm_to_world = np.identity(4)
 
     for bag_file in os.listdir(bag_dir):
         bag = rosbag.Bag(os.path.join(bag_dir,bag_file),"r")
@@ -52,11 +63,12 @@ def main():
                 quat_wxyz = Quaternion(w=quat_xyzw[3],x=quat_xyzw[0],y=quat_xyzw[1],z=quat_xyzw[2])
                 transf = quat_wxyz.transformation_matrix
                 transf[0:3,3] = trans.T
-                data['pose'].append(transf)
+                transform = np.linalg.inv(jpm_to_world)@transf
+                data['pose'].append(transform)
                 data['pose_time'].append(t)
-                data['x'].append(pose.position.x)
-                data['y'].append(pose.position.y)
-                data['z'].append(pose.position.z)
+                data['x'].append(transform[0,3])
+                data['y'].append(transform[1,3])
+                data['z'].append(transform[2,3])
 
         bag.close()
     

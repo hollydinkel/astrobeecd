@@ -4,7 +4,6 @@ import numpy as np
 import os
 import argparse
 
-
 parser = argparse.ArgumentParser(description="Process sequential poses.")
 parser.add_argument("survey", help="Indicate survey number")
 parser.add_argument("date", help="Dataset date.")
