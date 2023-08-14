@@ -18,9 +18,9 @@ pose_list = [int(os.path.splitext(file)[0]) for file in os.listdir(poses_dir)]
 img_list = [int(os.path.splitext(file)[0]) for file in os.listdir(img_dir)]
 
 save = []
-for img in img_list:
+for img in sorted(img_list):
     diff = []
-    for pose in pose_list:
+    for pose in sorted(pose_list):
         diff.append(abs(pose-img))
     i = np.argmin(diff)
     save.append(f'{pose_list[i]}.txt')

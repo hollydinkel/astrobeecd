@@ -22,10 +22,7 @@ def main():
 
     bag_dir = f"./data/{args.date}/{args.robot}/bags/survey{args.survey}"
     model = f"./data/{args.date}/{args.robot}/model.obj"
-    output_dir = f"./data/{args.date}/{args.robot}/plot/survey{args.survey}"
-    try: os.mkdir(output_dir)
-    except FileExistsError:
-        print(f"{output_dir} already exists!")
+    output_dir = f"./data/{args.date}/{args.robot}/plot"
 
     # # nav_cam_tf = transform(vec3(0.1157+0.002, -0.0422, -0.0826), quat4(-0.46938154, -0.52978318, -0.5317378, -0.46504373))
     
@@ -45,15 +42,16 @@ def main():
     else:
         jpm_to_world = np.identity(4)
 
-    for bag_file in os.listdir(bag_dir):
+    data = {'pose': [],
+            'pose_time': [],
+            'image_time': [],
+            'x': [],
+            'y': [],
+            'z': []}
+
+    for bag_file in sorted(os.listdir(bag_dir)):
         bag = rosbag.Bag(os.path.join(bag_dir,bag_file),"r")
 
-        data = {'pose': [],
-                'pose_time': [],
-                'image_time': [],
-                'x': [],
-                'y': [],
-                'z': []}
         for (topic, msg, t) in bag.read_messages(topics=['/gnc/ekf']):
             
             if topic == '/gnc/ekf':
@@ -63,21 +61,20 @@ def main():
                 quat_wxyz = Quaternion(w=quat_xyzw[3],x=quat_xyzw[0],y=quat_xyzw[1],z=quat_xyzw[2])
                 transf = quat_wxyz.transformation_matrix
                 transf[0:3,3] = trans.T
-                transform = np.linalg.inv(jpm_to_world)@transf
+                transform = np.linalg.inv(jpm_to_world)@transf@body_to_cam_transf
                 data['pose'].append(transform)
                 data['pose_time'].append(t)
                 data['x'].append(transform[0,3])
                 data['y'].append(transform[1,3])
                 data['z'].append(transform[2,3])
-
-        bag.close()
     
     granite = Mesh(model)
     granite.c('white').lighting('glossy')
     trajectory=Line([data['x'],data['y'],data['z']], c=(255, 0, 0), lw=3)
     plotter = Plotter()
-    plotter.show(granite,trajectory, viewup="+z",axes=False)
-    plotter.interactive().close()
+    plotter.show(granite,trajectory, viewup="-z",axes=False, roll=180, azimuth=180)
+    print(output_dir+f'/survey{args.survey}.png')
+    plotter.screenshot(filename=output_dir+f'/survey{args.survey}.png', scale=1)
 
 if __name__ == "__main__":
     main()

@@ -41,6 +41,7 @@ if args.robot=='bsharp':
     cy = '495.51236'
     gain = 100
     exposure = 150
+    model = f'./data/models/granite/model.obj'
 elif args.robot=='bumble':
     distortion_coeff = 0.998693,
     fx = '608.8073'
@@ -49,6 +50,7 @@ elif args.robot=='bumble':
     cy = '549.08386'
     gain=50
     exposure=175
+    model = f'./data/models/iss/model.obj'
 elif args.robot=='queen':
     distortion_coeff = 1.00201
     fx = '604.19903'
@@ -57,6 +59,7 @@ elif args.robot=='queen':
     cy = '509.73835'
     gain=50
     exposure=175
+    model = f'./data/models/iss/model.obj'
 elif args.robot=='sim':
     distortion_coeff = 0.9984679695413576
     fx = '611.0529144295888'
@@ -65,6 +68,7 @@ elif args.robot=='sim':
     cy = '558.0507290999258'
     gain = 0
     exposure = 160
+    model = f'./data/models/sim/model.obj'
 
 tree = ET.parse('./cameras.xml')
 root = tree.getroot()
@@ -116,4 +120,6 @@ with open("cameras.xml", "w") as f:
 
 shutil.move("cameras.xml",os.path.join(fastcd_data_dir,'cameras.xml'))
 try: shutil.copytree(images_dir,f'{fastcd_data_dir}/images/')
+except: pass
+try: shutil.copy(model,f'{fastcd_data_dir}/')
 except: pass

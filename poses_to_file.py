@@ -10,12 +10,6 @@ import cv2
 import rosbag
 from cv_bridge import CvBridge
 
-# Message imports
-from sensor_msgs.msg import Image as SensorImage
-from sensor_msgs.msg import CameraInfo
-from geometry_msgs.msg import Pose
-import message_filters
-
 def main():
     """Extract a folder of images from a rosbag.
     """ 
@@ -28,6 +22,7 @@ def main():
     args = parser.parse_args()
 
     bag_dir = f"./data/{args.date}/{args.robot}/bags/survey{args.survey}"
+    print("Bag directory: ", bag_dir)
 
     output_dir = f"./data/{args.date}/{args.robot}/bayer/survey{args.survey}"
     output_dir_poses = f"./data/{args.date}/{args.robot}/pose/survey{args.survey}"
@@ -65,23 +60,12 @@ def main():
         jpm_to_world = np.identity(4)
         img_topic = '/hw/cam_nav_bayer'
 
-    # Approximate time synchronizer parameters
-    ats_queue_size = 1000 # Max messages in any queue
-    ats_slop = 0.1 # Max delay to allow between messages
+    data = {'pose': [],
+            'pose_time': [],
+            'image_time': []}
 
-    img_sub = message_filters.Subscriber(img_topic, SensorImage)
-    pose_sub = message_filters.Subscriber('/gnc/ekf', Pose)
-    ts = message_filters.ApproximateTimeSynchronizer([img_sub, pose_sub],
-                                                        queue_size=ats_queue_size,
-                                                        slop=ats_slop,
-                                                        allow_headerless=False)
-
-    for bag_file in os.listdir(bag_dir):
+    for bag_file in sorted(os.listdir(bag_dir)):
         bag = rosbag.Bag(os.path.join(bag_dir,bag_file),"r")
-
-        data = {'pose': [],
-                'pose_time': [],
-                'image_time': []}
 
         for (topic, msg, t) in bag.read_messages(topics=['/gnc/ekf',img_topic]):
             
@@ -92,7 +76,7 @@ def main():
                 quat_wxyz = Quaternion(w=quat_xyzw[3],x=quat_xyzw[0],y=quat_xyzw[1],z=quat_xyzw[2])
                 transf = quat_wxyz.transformation_matrix
                 transf[0:3,3] = trans.T
-                transform = np.linalg.inv(jpm_to_world)@transf
+                transform = np.linalg.inv(jpm_to_world)@transf@body_to_cam_transf
                 data['pose'].append(transform)
                 data['pose_time'].append(t)
             
@@ -109,7 +93,7 @@ def main():
             i = np.argmin(diff)
             saved_pose = data['pose'][i]
             saved_t = data['pose_time'][i]
-            np.savetxt(f'{output_dir_poses}/{saved_t}.txt', saved_pose@body_to_cam_transf)
+            np.savetxt(f'{output_dir_poses}/{saved_t}.txt', saved_pose)
             print(f"Wrote TF {saved_t}")
 
         bag.close()
