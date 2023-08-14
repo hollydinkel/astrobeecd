@@ -27,7 +27,7 @@ try: shutil.copytree(images_dir, fastcd_data_dir+'/images')
 except:
     pass
 
-shutil.copy("./scripts/cameras_template.xml","./scripts/cameras.xml")
+shutil.copy("./template/cameras_template.xml","./template/cameras.xml")
 
 # camera configs
 # bsharp2
@@ -68,7 +68,7 @@ elif args.robot=='sim':
     exposure = 160
     model = f'./data/models/sim/model.obj'
 
-tree = ET.parse('./scripts/cameras.xml')
+tree = ET.parse('./template/cameras.xml')
 root = tree.getroot()
 separator = " "
 
@@ -109,14 +109,14 @@ for i,pose in enumerate(poses):
 
 xmlstr = minidom.parseString(ET.tostring(root)).toprettyxml(indent="  ")
 
-with open("./scripts/cameras.xml", "w") as f:
+with open("./template/cameras.xml", "w") as f:
     f.write(xmlstr)
-with open("./scripts/cameras.xml", "r") as f:
+with open("./template/cameras.xml", "r") as f:
     lines = [line for line in f if line.strip() != ""]
-with open("./scripts/cameras.xml", "w") as f:
+with open("./template/cameras.xml", "w") as f:
     f.writelines(lines)
 
-shutil.move("./scripts/cameras.xml",os.path.join(fastcd_data_dir,'cameras.xml'))
+shutil.move("./template/cameras.xml",os.path.join(fastcd_data_dir,'cameras.xml'))
 try: shutil.copytree(images_dir,f'{fastcd_data_dir}/images/')
 except: pass
 try: shutil.copy(model,f'{fastcd_data_dir}/')

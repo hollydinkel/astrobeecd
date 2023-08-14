@@ -9,7 +9,7 @@ export ASTROBEE_WS=$HOME/astrobee
 cd $ASTROBEE_WS && git clone https://github.com/hollydinkel/astrobee_data_processing
 ```
 
-The steps for creating a dataset to use with Fast Change Detection are included below. The raw data used to create the dataset are ![here](https://drive.google.com/drive/folders/1mBr_7hCGb8cP5V2ny_jZI7lhxymfJc7W?usp=sharing). Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `process.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.
+The steps for creating a dataset to use with Fast Change Detection are included below. Download a dated raw dataset from ![here](https://drive.google.com/drive/folders/1mCxaicloRZOwuGWVxp52GwxBaCMDVEri?usp=sharing). Unzip the dataset into  Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `process.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.
 
 1. Perform initial extraction of images and poses from bag data to folder:
 ```bash
@@ -40,7 +40,7 @@ cd $DATA/data/$DATE/$ROBOT/bayer/survey$SURVEY
 ls -v | nl -v 0 | while read n f; do mv -n "$f" "Image$n.JPG"; done
 ```
 
-5. Create `cameras.xml` file used in FastCD:
+5. Create `cameras.xml` file used in FastCD. Make sure to change the `fastcd_data_directory` variable in line 21 before running this.
 
 ```bash
 cd $DATA
