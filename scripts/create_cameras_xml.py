@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 images_dir = f'./data/{args.date}/{args.robot}/bayer/survey{args.survey}'
 poses_dir = f'./data/{args.date}/{args.robot}/pose/survey{args.survey}'
-poses = os.listdir(poses_dir)
+poses = sorted(os.listdir(poses_dir))
 fastcd_data_dir = f'/home/hollydinkel/change_ws/src/fast_change_detection/example/dataset/{args.date}_survey{args.survey}'
 
 try: os.mkdir(fastcd_data_dir)
