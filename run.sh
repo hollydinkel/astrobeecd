@@ -4,6 +4,10 @@ export SURVEY=1
 export DATE=20230419
 export ROBOT=bsharp
 
+# Install dependencies
+apt-get install -y python3-pip
+pip install gdown pyquaternion
+
 # Download data
 cd $DATA && gdown https://drive.google.com/uc?id=1qNCRl9XceINrHLFUp4pBti9I4oJO2zf1
 unzip data.zip
