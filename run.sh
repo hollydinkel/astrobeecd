@@ -7,7 +7,7 @@ export ROBOT=bsharp
 # Install dependencies
 apt-get update
 apt-get install -y python3-pip
-pip install gdown pyquaternion
+pip install gdown pyquaternion pandas
 
 # # Download data
 cd $DATA && gdown https://drive.google.com/uc?id=1qNCRl9XceINrHLFUp4pBti9I4oJO2zf1
