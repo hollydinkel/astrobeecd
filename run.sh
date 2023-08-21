@@ -1,10 +1,10 @@
 export ASTROBEE_WS=/src/astrobee/src
 export DATA=$ASTROBEE_WS/astrobee_data_processing
-export SURVEY=1
 export DATE=20230419
 export ROBOT=bsharp
 
 # Install dependencies
+apt-get update
 apt-get install -y python3-pip
 pip install gdown pyquaternion
 
