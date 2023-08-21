@@ -64,12 +64,22 @@ def main():
             'pose_time': [],
             'image_time': []}
 
-    for bag_file in sorted(os.listdir(bag_dir)):
+    bag_number = 0
+    bags = sorted(os.listdir(bag_dir))
+    print(f"Survey: {args.survey}")
+    for bag_file in bags:
         bag = rosbag.Bag(os.path.join(bag_dir,bag_file),"r")
-
+        print(f"Saving poses and images from bag file {bag_number}/{len(bags)-1}.")
+        bag_number+=1
         for (topic, msg, t) in bag.read_messages(topics=['/gnc/ekf',img_topic]):
+
+            if topic == img_topic:
+                cv_img = bridge.imgmsg_to_cv2(msg, desired_encoding="passthrough")
+                rgb = cv2.cvtColor(cv_img, cv2.COLOR_BayerGR2RGB) 
+                data['image_time'].append(msg.header.stamp.to_sec())
+                cv2.imwrite(os.path.join(output_dir, f"{msg.header.stamp.to_sec()}.jpg"), rgb)
             
-            if topic == '/gnc/ekf':
+            elif topic == '/gnc/ekf':
                 pose = msg.pose
                 trans = np.array([pose.position.x, pose.position.y, pose.position.z])
                 quat_xyzw = [pose.orientation.x,pose.orientation.y,pose.orientation.z,pose.orientation.w]
@@ -78,15 +88,9 @@ def main():
                 transf[0:3,3] = trans.T
                 transform = np.linalg.inv(jpm_to_world)@transf@body_to_cam_transf
                 data['pose'].append(transform)
-                data['pose_time'].append(t)
-            
-            if topic == img_topic:
-                cv_img = bridge.imgmsg_to_cv2(msg, desired_encoding="passthrough")
-                rgb = cv2.cvtColor(cv_img, cv2.COLOR_BayerGR2RGB) 
-                data['image_time'].append(t)
-                cv2.imwrite(os.path.join(output_dir, f"{t}.jpg"), rgb)
+                data['pose_time'].append(msg.header.stamp.to_sec())
 
-        for image_t in data['image_time']:
+        for image_t in sorted(data['image_time']):
             diff = []
             for pose_t, pose in zip(data['pose_time'],data['pose']):
                 diff.append(abs(pose_t-image_t))
@@ -94,7 +98,6 @@ def main():
             saved_pose = data['pose'][i]
             saved_t = data['pose_time'][i]
             np.savetxt(f'{output_dir_poses}/{saved_t}.txt', saved_pose)
-            print(f"Wrote TF {saved_t}")
 
         bag.close()
 

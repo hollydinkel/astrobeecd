@@ -12,10 +12,10 @@ parser.add_argument("robot", help="Robot name")
 args = parser.parse_args()
 
 img_dir = f"./data/{args.date}/{args.robot}/bayer/survey{args.survey}"
-poses_dir = f"./data/{args.date}/{args.robot}/pose/survey{args.survey}"
+pose_dir = f"./data/{args.date}/{args.robot}/pose/survey{args.survey}"
 
-pose_list = [int(os.path.splitext(file)[0]) for file in os.listdir(poses_dir)]
-img_list = [int(os.path.splitext(file)[0]) for file in os.listdir(img_dir)]
+pose_list = [float(os.path.splitext(file)[0]) for file in os.listdir(pose_dir)]
+img_list = [float(os.path.splitext(file)[0]) for file in os.listdir(img_dir)]
 
 save = []
 for img in sorted(img_list):
@@ -25,7 +25,7 @@ for img in sorted(img_list):
     i = np.argmin(diff)
     save.append(f'{pose_list[i]}.txt')
 
-remove = list(set(os.listdir(poses_dir)).difference(save))
+remove = list(set(os.listdir(pose_dir)).difference(save))
 
 for file in remove:
-    os.remove(os.path.join(poses_dir,file))
+    os.remove(os.path.join(pose_dir,file))
