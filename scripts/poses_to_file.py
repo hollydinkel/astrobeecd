@@ -56,8 +56,14 @@ def main():
         jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
         jpm_to_world[3,3] = 1
         img_topic = '/hw/cam_nav'
-    else:
+    elif args.robot=="bsharp":
         jpm_to_world = np.identity(4)
+        img_topic = '/hw/cam_nav_bayer'
+    else:
+        jpm_to_world = np.zeros((4,4))
+        jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
+        jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
+        jpm_to_world[3,3] = 1
         img_topic = '/hw/cam_nav_bayer'
 
     bag_number = 0

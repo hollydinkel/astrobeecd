@@ -42,8 +42,11 @@ def main():
     elif args.robot=="bsharp":
         jpm_to_world = np.identity(4)
         model = f"./data/models/granite/model.obj"
-    elif args.robot=="bumble" or "queen":
-        jpm_to_world = np.identity(4)
+    else:
+        jpm_to_world = np.zeros((4,4))
+        jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
+        jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
+        jpm_to_world[3,3] = 1
         model = f"./data/models/iss/model.obj"
 
     data = {'pose': [],
