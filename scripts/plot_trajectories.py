@@ -38,15 +38,23 @@ def main():
         jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
         jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
         jpm_to_world[3,3] = 1
-        view = "+x"
+        roll = 90
+        azimuth = -90
         model = "./data/models/sim/model.obj"
     elif args.robot=="bsharp":
         jpm_to_world = np.identity(4)
         model = "./data/models/granite/model.obj"
-        view = "-z"
+        roll = 180
+        azimuth = 180
     elif args.robot=="bumble" or args.robot=="queen":
-        jpm_to_world = np.identity(4)
-        view = "+z"
+        jpm_to_world = np.zeros((4,4))
+        jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
+        jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
+        jpm_to_world[3,3] = 1
+        roll = 90
+        azimuth = -90
+        # roll = -90
+        # azimuth = 90
         model = "./data/models/sim/model.obj"
 
     data = {'pose': [],
@@ -79,7 +87,7 @@ def main():
     granite.c('white').lighting('glossy')
     trajectory=Line([data['x'],data['y'],data['z']], c=(255, 0, 0), lw=3)
     plotter = Plotter()
-    plotter.show(granite,trajectory, viewup=view,axes=False, roll=180, azimuth=180)
+    plotter.show(granite,trajectory,axes=False, roll=roll, azimuth=azimuth)
     print(output_dir+f'/survey{args.survey}.png')
     plotter.screenshot(filename=output_dir+f'/survey{args.survey}.png', scale=1)
 
