@@ -9,7 +9,7 @@ export ASTROBEE_LOCAL_WS=$HOME/astrobee
 cd $ASTROBEE_WS && git clone https://github.com/hollydinkel/astrobee_data_processing
 ```
 
-The steps for creating a dataset to use with Fast Change Detection are included below. Download a dated raw dataset from ![here](https://drive.google.com/drive/folders/1mCxaicloRZOwuGWVxp52GwxBaCMDVEri?usp=sharing). Unzip the dataset into  Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `process.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.
+The steps for creating a dataset to use with Fast Change Detection are included below. Download a dated raw dataset from ![here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Unzip the dataset into  Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `run.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.
 
 1. The first step of data processing is extraction of images and poses from bag data to folder, processing of sequential images to remove images where frames did not move much between images, and processing of sequential poses so that final poses are close in time (timestamps are close) to the image timestamps. First, start a running Astrobee docker container with
 
@@ -43,3 +43,6 @@ NASA, "ISAAC (Integrated System for Autonomous and Adaptive Caretaking)," (2023)
 <a id="3">[3]</a> 
 E. Palazzolo and C. Stachniss, "Fast Image-Based Geometric Change Detection Given a 3D Model," in IEEE Int. Conf. Robot. Autom. (ICRA), 2018, pp. 6308–6315. doi: 10.1109/ICRA.2018.
 8461019 [[paper]](https://ieeexplore.ieee.org/document/8461019) [[code]](https://github.com/PRBonn/fast_change_detection)
+
+<a id="4">[4]</a> 
+H. Dinkel, J. Di, J. Santos, K. Albee, P.V.K. Borges, M. Moreira, O. Alexandrov, B. Coltin, and T. Smith, "Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots," in IAF International Astronautical Congress (IAC), 2023. [[paper]](https://arxiv.org/abs/2311.02558)
