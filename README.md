@@ -14,7 +14,7 @@ Follow the [data processing instructions](https://github.com/hollydinkel/astrobe
 
 ## Using Prepared Data
 
-Follow the [using FastCD instructions](https://github.com/hollydinkel/astrobee_change_detection/blob/master/docs/fastcd.md).
+Follow the [using FastCD instructions](https://github.com/hollydinkel/astrobee_change_detection/blob/master/docs/using_fastcd.md).
 
 ## Learn More
 
