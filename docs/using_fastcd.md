@@ -8,13 +8,13 @@ catkin deps fetch
 catkin build
 ```
 
-Remember, `catkin build` is required after modifying any C++ files. Next, download our example dataset into your fastcd folder.
+Remember, `catkin build` is required after modifying any C++ files. Next, download our example dataset into your fastcd folder. Install `gdown` with `pip install gdown` and perform
 
 ```bash
 cd ~/YOUR_ROS_WORKSPACE/src/fast_change_detection
 mkdir data/ && cd data/
-gdown https://drive.google.com/uc?id=1qNCRl9XceINrHLFUp4pBti9I4oJO2zf1
+gdown https://bit.ly/astrobee_fastcd_data
 unzip *.zip
 rm *.zip
 cd .. && ./bin/fastcd_example DATASET_PATH
-```
+``` 
