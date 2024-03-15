@@ -2,24 +2,15 @@
 
 This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo Borges, Marina Moreira, Oleg Alexandrov, Brian Coltin, and Trey Smith.
 
+*Denotes equal contribution.
+
 ## Preparing Data From Astrobee
-
-Install the [Astrobee flight software](https://github.com/nasa/astrobee). Additional instructions for using the Astrobee flight software with Docker are [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Clone this repository into the astrobee flight software repository:
-
-```bash
-export ASTROBEE_LOCAL_WS=$HOME/astrobee
-cd $ASTROBEE_WS && git clone https://github.com/hollydinkel/astrobee_change_detection
-```
 
 Follow the [data processing instructions](https://github.com/hollydinkel/astrobee_change_detection/blob/master/docs/data_processing.md).
 
 ## Using Prepared Data
 
-Clone this repository anywhere:
-
-```bash
-git clone https://github.com/hollydinkel/astrobe
-```
+Follow the [using FastCD instructions](https://github.com/hollydinkel/astrobee_change_detection/blob/master/docs/fastcd.md).
 
 ## Learn More
 
