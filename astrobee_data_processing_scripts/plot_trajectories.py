@@ -33,8 +33,6 @@ def main():
 
     if args.robot=="sim":
         jpm_to_world = np.zeros((4,4))
-        # note: rpy in ROS is ZYX Euler angles representation
-        # jpm_to_world_rpy = np.array([3.1415, 0, -1.570796])
         jpm_to_world[0:3, 3] = np.array([10.9358938, -2.3364698, 4.8505872])
         jpm_to_world[0:3, 0:3] = np.array([[0,-1,0],[-1,0,0],[0, 0,-1]])
         jpm_to_world[3,3] = 1
@@ -53,8 +51,6 @@ def main():
         jpm_to_world[3,3] = 1
         roll = 90
         azimuth = -90
-        # roll = -90
-        # azimuth = 90
         model = "./data/models/sim/model.obj"
 
     data = {'pose': [],

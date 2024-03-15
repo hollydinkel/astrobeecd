@@ -6,7 +6,7 @@ First, install the [Astrobee flight software](https://github.com/nasa/astrobee).
 
 ```bash
 export ASTROBEE_LOCAL_WS=$HOME/astrobee
-cd $ASTROBEE_WS && git clone https://github.com/hollydinkel/astrobee_change_detection
+cd $ASTROBEE_WS && git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules
 ```
 
 Download a dated raw dataset from [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Unzip the dataset into a `astrobee_change_detection/data` directory (**HD 20231113: This is not the correct link, and the data on GDrive is no longer in the format to support this step anyway. Needs re-testing**). Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `run.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.

@@ -3,7 +3,7 @@
 First, [create a ROS workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace). Next, `cd YOUR_ROS_WORKSPACE/src`. Clone this repository into this workspace and build the package:
 
 ```bash
-git clone https://github.com/hollydinkel/astrobee_change_detection
+git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules
 catkin deps fetch
 catkin build
 ```
