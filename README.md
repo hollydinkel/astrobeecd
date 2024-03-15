@@ -4,6 +4,10 @@ This repository contains the FastCD Robot Operating System (ROS) package. It als
 
 *Denotes equal contribution.
 
+<p align="center">
+  <img src="images/inconsistency.png" width="2000" title="change_detection">
+</p>
+
 ## Preparing Data From Astrobee
 
 Follow the [data processing instructions](https://github.com/hollydinkel/astrobee_change_detection/blob/master/docs/data_processing.md).
