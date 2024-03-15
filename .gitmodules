@@ -1,0 +1,9 @@
+[submodule "fast_change_detection"]
+	path = fast_change_detection
+	url = git@github.com:PRBonn/fast_change_detection.git
+[submodule "catkin"]
+	path = catkin
+	url = https://github.com/ros/catkin.git
+[submodule "glow"]
+	path = glow
+	url = https://github.com/jbehley/glow.git
