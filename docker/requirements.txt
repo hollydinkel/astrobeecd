@@ -1,0 +1,5 @@
+numpy>=1.23
+argparse>=1.4.0
+vedo>=2024.5.1
+pyquaternion>=0.9.9
+pytest-shutil>=1.7.0

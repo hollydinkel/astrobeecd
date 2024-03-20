@@ -1,0 +1,49 @@
+FROM ros:noetic-robot
+
+# Copyright (c) 2024, NASA. All rights reserved.
+
+# To build:
+# docker build -t fastcd:noetic -f Dockerfile.noetic ..
+
+# Set up directories and copy installation targets
+ENV HOME=/root
+ENV CATKIN_WS=${HOME}/fastcd_ws
+ENV SRC=${CATKIN_WS}/src
+ENV DEVEL=${CATKIN_WS}/devel
+COPY . ${SRC}/fastcd
+COPY ./docker/requirements.txt /tmp/requirements.txt
+COPY ./docker/init_workspace.sh /tmp/init_workspace.sh
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get -y --no-install-recommends install \
+    # Install system and development components
+    apt-utils \
+    software-properties-common \
+    build-essential \
+    cmake \
+    git \
+    python3-pip \
+    python3-catkin-tools \
+    python3-catkin-pkg \
+    python3-rosbag \
+    google-mock \
+    libgtest-dev \
+    python3-nose \
+    python3-empy \
+    python3-mock \
+    python3-setuptools \
+    && apt-get -y autoremove \
+    && apt-get clean
+
+# Install required Python components
+RUN python3 -m pip install -r /tmp/requirements.txt
+
+# Source ROS noetic
+RUN . /opt/ros/noetic/setup.sh && \
+    /tmp/init_workspace.sh
+
+# Set Display variables
+ENV DISPLAY=:0
+ENV TERM=xterm
+# Some QT-Apps do not show controls without this
+ENV QT_X11_NO_MITSHM=1

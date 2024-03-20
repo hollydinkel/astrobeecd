@@ -5,8 +5,6 @@ from xml.dom import minidom
 import os
 import shutil
 import argparse
-from numpy import loadtxt
-from decimal import Decimal
 
 parser = argparse.ArgumentParser(description="Process sequential poses.")
 parser.add_argument("survey", help="Indicate survey number")

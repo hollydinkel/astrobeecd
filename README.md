@@ -1,6 +1,12 @@
 # Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots
 
-This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo Borges, Marina Moreira, Oleg Alexandrov, Brian Coltin, and Trey Smith.
+<p>
+  <a href="https://github.com/hollydinkel/astrobee_change_detection/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/hollydinkel/astrobee_change_detection/build.yml?branch=master">
+  </a>
+</p>
+
+This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo Borges, Marina Moreira, Ryan Soussan, Oleg Alexandrov, Brian Coltin, and Trey Smith.
 
 *Denotes equal contribution.
 
@@ -22,16 +28,15 @@ The [supplementary video](https://www.youtube.com/watch?v=VfjV-zwFEtU) describes
 
 [![supplementary video](https://img.youtube.com/vi/VfjV-zwFEtU/0.jpg)](https://www.youtube.com/watch?v=VfjV-zwFEtU)
 
-## Bibtex
+## BibTex
 
 ```bash
 @ARTICLE{
   dinkel2023astrobee,
-  author={Dinkel, Holly and Di, Julia and Santos, Jamie and Albee, Keenan and Borges, Paulo and Moreira, Marina and Alexandrov, Oleg and Coltin, Brian and Smith, Trey},
-  journal={IAF International Astronautical Congress}, 
+  author={Dinkel, Holly and Di, Julia and Santos, Jamie and Albee, Keenan and Borges, Paulo and Moreira, Marina and Soussan, Ryan and Alexandrov, Oleg and Coltin, Brian and Smith, Trey},
+  journal={Under Review}, 
   title={Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots}, 
-  year={2023},
-  month={Oct.},
+  year={2024}
 }
 ```
 
