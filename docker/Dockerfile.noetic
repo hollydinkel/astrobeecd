@@ -40,7 +40,7 @@ RUN python3 -m pip install -r /tmp/requirements.txt
 
 # Source ROS noetic
 RUN . /opt/ros/noetic/setup.sh && \
-    /tmp/init_workspace.sh
+    ./tmp/init_workspace.sh
 
 # Set Display variables
 ENV DISPLAY=:0
