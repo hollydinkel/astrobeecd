@@ -1,10 +1,7 @@
 # Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots
 
-<p>
-  <a href="https://github.com/hollydinkel/astrobee_change_detection/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/hollydinkel/astrobee_change_detection/build.yml?branch=master">
-  </a>
-</p>
+[![build](https://github.com/hollydinkel/astrobee_change_detection/actions/workflows/build.yml?query=branch%3Amaster)](https://github.com/hollydinkel/astrobee_change_detection/actions)
+
 
 This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo Borges, Marina Moreira, Ryan Soussan, Oleg Alexandrov, Brian Coltin, and Trey Smith.
 
