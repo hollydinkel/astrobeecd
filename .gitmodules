@@ -1,6 +1,6 @@
 [submodule "fast_change_detection"]
 	path = fast_change_detection
-	url = git@github.com:hollydinkel/fast_change_detection.git
+	url = https://github.com/hollydinkel/fast_change_detection.git
 [submodule "catkin"]
 	path = catkin
 	url = https://github.com/ros/catkin.git
