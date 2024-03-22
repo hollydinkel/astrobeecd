@@ -11,8 +11,8 @@ parser.add_argument("robot", help="Robot name")
 
 args = parser.parse_args()
 
-img_dir = f"./data/{args.date}/{args.robot}/bayer/survey{args.survey}"
-pose_dir = f"./data/{args.date}/{args.robot}/pose/survey{args.survey}"
+img_dir = f"{args.date}/{args.robot}/bayer/survey{args.survey}"
+pose_dir = f"{args.date}/{args.robot}/pose/survey{args.survey}"
 
 pose_list = sorted([int(os.path.splitext(file)[0]) for file in os.listdir(pose_dir)])
 img_list = sorted([int(os.path.splitext(file)[0]) for file in os.listdir(img_dir)])

@@ -21,10 +21,10 @@ def main():
 
     args = parser.parse_args()
 
-    bag_dir = f"./data/{args.date}/{args.robot}/bags/survey{args.survey}"
+    bag_dir = f"{args.date}/{args.robot}/bags/survey{args.survey}"
 
-    output_dir = f"./data/{args.date}/{args.robot}/bayer/survey{args.survey}"
-    output_dir_poses = f"./data/{args.date}/{args.robot}/pose/survey{args.survey}"
+    output_dir = f"{args.date}/{args.robot}/bayer/survey{args.survey}"
+    output_dir_poses = f"{args.date}/{args.robot}/pose/survey{args.survey}"
     try: os.mkdir(output_dir)
     except FileExistsError:
         print(f"{output_dir} already exists!")
