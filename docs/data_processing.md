@@ -2,15 +2,15 @@
 
 The files documents the steps for creating a dataset to use with Fast Change Detection. 
 
-First, install the [Astrobee flight software](https://github.com/nasa/astrobee). Additional instructions for using the Astrobee flight software with Docker are [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Clone this repository into the astrobee flight software repository:
+First, install the [Astrobee flight software](https://github.com/nasa/astrobee) in the '$HOME' directory. Additional instructions for using the Astrobee flight software with Docker are [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Next, clone this repository:
 
 ```bash
 cd $HOME && git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules
 ```
 
-Download a dated raw dataset of `.bag` files from [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Unzip the dataset into a `astrobee_change_detection/data` directory (**HD 20231113: This is not the correct link, and the data on GDrive is no longer in the format to support this step anyway. Needs re-testing**). Note that the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in each step. The first four steps can be performed in a docker container where the running container is mounted to a local directory. The provided `run.sh` script runs these four steps. The last step should be performed locally if the FastCD workspace is built outside of the container.
+Follow the steps in the provided `process_data.sh` file to download raw `.bag` data and process it into a change detection-compatible dataset. Note that the home directory, the change detection catkin workspac, the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in the `process_data.sh` script. If the `astrobee` catkin workspace does not build locally, it is possible to do these steps in a docker container where the running container is mounted to a local directory. The provided `process_data.sh` script runs these four steps.
 
-1. The first step of data processing is extraction of images and poses from bag data to folder, processing of sequential images to remove images where frames did not move much between images, and processing of sequential poses so that final poses are close in time (timestamps are close) to the image timestamps. First, start a running Astrobee docker container with
+1. The first step of data processing is extraction of images and poses from bag data to folder, processing of sequential images to remove images where frames did not move much between images, and processing of sequential poses so that pose timestamps are close in time to image timestamps. First, start a running Astrobee docker container with
 
 ```bash
 export ASTROBEE_WS=$HOME/astrobee
@@ -20,8 +20,7 @@ cd $ASTROBEE_WS && sudo ./scripts/docker/run.sh -m bash
 Inside the docker container, run
 
 ```bash
-export DATA=/src/astrobee/src/astrobee_change_detection
-cd $DATA && ./run.sh
+cd $DATA && ./process_data.sh
 ```
 
 After processing the data in the the docker container, return to a local terminal to create a `cameras.xml` file for the dataset to use in FastCD. Make sure to change the `fastcd_data_directory` variable in line 21 of `scripts/create_cameras_xml.py` before running this. Also make sure the `DATE` and `ROBOT` arguments match those used in `run.sh`.
