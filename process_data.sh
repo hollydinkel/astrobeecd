@@ -1,6 +1,6 @@
 #!/bin/bash
 export HOME=/home/hdinkel
-export CATKIN_WS=$HOME/test_ws/src
+export CATKIN_WS=$HOME/change_ws/src
 export ASTROBEE=$HOME/astrobee
 export ASTROBEE_CHANGE_DETECTION=$CATKIN_WS/astrobee_change_detection
 export DATA=$ASTROBEE_CHANGE_DETECTION/data
