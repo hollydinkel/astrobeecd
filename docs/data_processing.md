@@ -6,6 +6,7 @@ First, install the [Astrobee flight software](https://github.com/nasa/astrobee) 
 
 ```bash
 cd $HOME && mkdir -p change_ws/src && git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules
+cd $HOME/change_ws/src/astrobee_change_detection && ./process_data.sh
 ```
 
 Follow the steps in the provided `process_data.sh` file to download raw `.bag` data and process it into a change detection-compatible dataset. Note that the home directory, the change detection catkin workspace, the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in the `process_data.sh` script. If the `astrobee` catkin workspace does not build locally, it is possible to do these steps in a docker container where the running container is mounted to a local directory. The provided `process_data.sh` script runs these four steps.

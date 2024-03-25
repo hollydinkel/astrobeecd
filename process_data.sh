@@ -18,9 +18,10 @@ pip install numpy --upgrade
 pip install gdown pyquaternion pandas
 
 # Download data
-cd $DATA && gdown https://drive.google.com/uc?id=1qNCRl9XceINrHLFUp4pBti9I4oJO2zf1
+cd $DATA
+gdown https://drive.google.com/uc?id=1qNCRl9XceINrHLFUp4pBti9I4oJO2zf1
 unzip data.zip
-cp data/ ../
+cp -r data/ ../
 rm -rf data/
 rm $DATA/data.zip
 
