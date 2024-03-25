@@ -16,7 +16,7 @@ args = parser.parse_args()
 images_dir = f'./data/{args.date}/{args.robot}/bayer/survey{args.survey}'
 poses_dir = f'./data/{args.date}/{args.robot}/pose/survey{args.survey}'
 poses = sorted(os.listdir(poses_dir))
-fastcd_data_dir = f'./fast_change_detection/example/dataset/{args.date}_{args.robot}_survey{args.survey}'
+fastcd_data_dir = f'./fast_change_detection/data/{args.date}-{args.robot}-survey{args.survey}'
 
 try: os.mkdir(fastcd_data_dir)
 except FileExistsError:
