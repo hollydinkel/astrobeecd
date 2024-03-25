@@ -5,7 +5,7 @@ The files documents the steps for creating a dataset to use with Fast Change Det
 First, install the [Astrobee flight software](https://github.com/nasa/astrobee) in the '$HOME' directory. Additional instructions for using the Astrobee flight software with Docker are [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Next, create a catkin workspace and clone this repository into the catkin workspace.
 
 ```bash
-cd $HOME && mkdir -p change_ws/src && git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules
+cd $HOME && mkdir -p change_ws/src && git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules $HOME/change_ws/src/astrobee_change_detection
 cd $HOME/change_ws/src/astrobee_change_detection && ./process_data.sh
 ```
 
