@@ -25,7 +25,7 @@ cp -r data/ ../
 rm -rf data/
 rm $DATA/data.zip
 
-for SURVEY_NUMBER in 2 3 4
+for SURVEY_NUMBER in 1 2 3 4
 do
     export SURVEY=$SURVEY_NUMBER
     cd $DATA && python3 $ASTROBEE_CHANGE_DETECTION/astrobee_data_processing_scripts/poses_to_file.py $SURVEY $DATE $ROBOT
