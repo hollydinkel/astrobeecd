@@ -1,8 +1,8 @@
-# Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots
+# AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots
 
 <p>
-  <a href="https://github.com/hollydinkel/astrobee_change_detection/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/hollydinkel/astrobee_change_detection/build.yml?branch=master">
+  <a href="https://github.com/hollydinkel/astrobeecd/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/hollydinkel/astrobeecd/build.yml?branch=master">
   </a>
 </p>
 
@@ -36,7 +36,7 @@ The [supplementary video](https://www.youtube.com/watch?v=VfjV-zwFEtU) describes
   dinkel2023astrobee,
   author={Dinkel, Holly and Di, Julia and Santos, Jamie and Albee, Keenan and Borges, Paulo and Moreira, Marina and Soussan, Ryan and Alexandrov, Oleg and Coltin, Brian and Smith, Trey},
   journal={Under Review}, 
-  title={Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots}, 
+  title={AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots}, 
   year={2024}
 }
 ```
