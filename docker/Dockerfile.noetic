@@ -3,14 +3,14 @@ FROM ros:noetic-robot
 # Copyright (c) 2024, NASA. All rights reserved.
 
 # To build:
-# docker build -t fastcd:noetic -f Dockerfile.noetic ..
+# docker build -t astrobeecd:noetic -f Dockerfile.noetic ..
 
 # Set up directories and copy installation targets
 ENV HOME=/root
-ENV CATKIN_WS=${HOME}/fastcd_ws
+ENV CATKIN_WS=${HOME}/astrobeecd_ws
 ENV SRC=${CATKIN_WS}/src
 ENV DEVEL=${CATKIN_WS}/devel
-COPY . ${SRC}/fastcd
+COPY . ${SRC}/astrobeecd
 COPY ./docker/requirements.txt /tmp/requirements.txt
 COPY ./docker/init_workspace.sh /tmp/init_workspace.sh
 ENV DEBIAN_FRONTEND=noninteractive

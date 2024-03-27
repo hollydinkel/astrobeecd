@@ -5,8 +5,8 @@ The files documents the steps for creating a dataset to use with Fast Change Det
 First, install the [Astrobee flight software](https://github.com/nasa/astrobee) in the '$HOME' directory. Additional instructions for using the Astrobee flight software with Docker are [here](https://docs.google.com/document/d/1Wx54si5_24rz0kJie31X54PIk_k_owT6qzlziGnAWYc/edit?usp=sharing). Next, create a catkin workspace and clone this repository into the catkin workspace.
 
 ```bash
-cd $HOME && mkdir -p change_ws/src && git clone https://github.com/hollydinkel/astrobee_change_detection --recurse-submodules $HOME/change_ws/src/astrobee_change_detection
-cd $HOME/change_ws/src/astrobee_change_detection && ./process_data.sh
+cd $HOME && mkdir -p change_ws/src && git clone https://github.com/hollydinkel/astrobeecd --recurse-submodules $HOME/change_ws/src/astrobeecd
+cd $HOME/change_ws/src/astrobeecd && ./process_data.sh
 ```
 
 Follow the steps in the provided `process_data.sh` file to download raw `.bag` data and process it into a change detection-compatible dataset. Note that the home directory, the change detection catkin workspace, the survey number (e.g., 1, 2, 3), the date (e.g., 20230419), and the robot name (e.g., bsharp) must be specified in the `process_data.sh` script. If the `astrobee` catkin workspace does not build locally, it is possible to do these steps in a docker container where the running container is mounted to a local directory. The provided `process_data.sh` script runs these four steps.
@@ -30,7 +30,7 @@ After processing the data in the the docker container, return to a local termina
 export SURVEY=1
 export DATE=20230419
 export ROBOT=bsharp
-cd $HOME/astrobee_change_detection
+cd $HOME/astrobeecd
 python3 scripts/create_cameras_xml.py $SURVEY $DATE $ROBOT
 ```
 

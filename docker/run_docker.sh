@@ -4,7 +4,7 @@
 
 CONTAINER_NAME=$1
 if [[ -z "${CONTAINER_NAME}" ]]; then
-    CONTAINER_NAME=fastcd
+    CONTAINER_NAME=astrobeecd
 fi
 
 # Specify a mapping between a host directory and a directory in the
@@ -16,7 +16,7 @@ fi
 
 CONTAINER_DIR=$3
 if [[ -z "${CONTAINER_DIR}" ]]; then
-    CONTAINER_DIR=/root/fastcd_ws/src/astrobee_change_detection
+    CONTAINER_DIR=/root/astrobeecd_ws/src/astrobeecd
 fi
 
 echo "Container name     : ${CONTAINER_NAME}"
@@ -26,7 +26,7 @@ TRACK_ID=`docker ps -aqf "name=^/${CONTAINER_NAME}$"`
 if [ -z "${TRACK_ID}" ]; then
     echo "Creating new astrobee change detection docker container."
     xhost +local:root
-    docker run  -it --privileged --network=host -v ${HOST_DIR}:${CONTAINER_DIR}:rw -v /tmp/.X11-unix:/tmp/.X11-unix:rw --env="DISPLAY" --name=${CONTAINER_NAME} fastcd:noetic bash
+    docker run  -it --privileged --network=host -v ${HOST_DIR}:${CONTAINER_DIR}:rw -v /tmp/.X11-unix:/tmp/.X11-unix:rw --env="DISPLAY" --name=${CONTAINER_NAME} astrobeecd:noetic bash
 else
     echo "Found fastcd docker container: ${TRACK_ID}."
     # Check if the container is already running and start if necessary.
