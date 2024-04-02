@@ -7,7 +7,7 @@
 </p>
 
 
-This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *Multi-Agent 3D Map Reconstruction and Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo Borges, Marina Moreira, Ryan Soussan, Oleg Alexandrov, Brian Coltin, and Trey Smith.
+This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo V.K. Borges, Marina Moreira, Ryan Soussan, Oleg Alexandrov, Brian Coltin, and Trey Smith.
 
 *Denotes equal contribution.
 
