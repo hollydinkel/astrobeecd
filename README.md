@@ -32,12 +32,15 @@ The [supplementary video](https://www.youtube.com/watch?v=VfjV-zwFEtU) describes
 ## BibTex
 
 ```bash
-@ARTICLE{
-  dinkel2023astrobee,
-  author={Dinkel, Holly and Di, Julia and Santos, Jamie and Albee, Keenan and Borges, Paulo and Moreira, Marina and Soussan, Ryan and Alexandrov, Oleg and Coltin, Brian and Smith, Trey},
-  journal={Under Review}, 
-  title={AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots}, 
-  year={2024}
+@ARTICLE{dinkel2024astrobeecd,
+    author = {Dinkel, Holly and Di, Julia and Santos, Jamie and Albee, Keenan and Borges, Paulo V.K. and Gouveia Moreira, Marina and Soussan, Ryan and Alexandrov, Oleg and Coltin, Brian and Smith, Trey},
+    title = {AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots},
+    journal= {Acta Astronautica},
+    volume = {223},
+    pages = {98-107},
+    year = {2024},
+    issn = {0094-5765},
+    doi = {https://doi.org/10.1016/j.actaastro.2024.06.037},
 }
 ```
 
