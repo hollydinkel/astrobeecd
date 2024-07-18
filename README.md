@@ -1,4 +1,5 @@
 # AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots
+**Published in Acta Astronautica ([ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0094576524003539))**
 
 <p>
   <a href="https://github.com/hollydinkel/astrobeecd/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
@@ -6,13 +7,10 @@
   </a>
 </p>
 
-
-This repository contains the FastCD Robot Operating System (ROS) package. It also contains helper scripts for converting Astrobee robot data into a format FastCD expects. The FastCD ROS package is applied to these Astrobee data, collected in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab, as documented in our paper *AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots*, by Holly Dinkel*, Julia Di*, Jamie Santos, Keenan Albee, Paulo V.K. Borges, Marina Moreira, Ryan Soussan, Oleg Alexandrov, Brian Coltin, and Trey Smith.
-
-*Denotes equal contribution.
+This repository contains the code for AstrobeeCD, a system for 3D scene change detection toward near-real-time environmental awareness of space outposts using the Astrobee free-flying robot in microgravity. A set of image and depth data from one time step is used to reconstruct a 3D model of the environment. The 3D model is used as the basis for comparison for free-flyer environment surveys at future time steps, where an image-based change detection algorithm identifies inconsistencies against the 3D model. Change detection is demonstrated using real image and pose data collected by an Astrobee robot in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab.
 
 <p align="center">
-  <img src="images/inconsistency.png" width="2000" title="change_detection">
+  <img src="images/astrobee-iss.gif" width="500" title="Astrobee">
 </p>
 
 ## Preparing Data From Astrobee
@@ -48,6 +46,6 @@ The [supplementary video](https://www.youtube.com/watch?v=VfjV-zwFEtU) describes
 <a id="1">[1]</a> 
 NASA, "Astrobee Robot Software," (2023). [[code]](https://github.com/nasa/astrobee)
 
-<a id="3">[3]</a> 
+<a id="2">[2]</a> 
 E. Palazzolo and C. Stachniss, "Fast Image-Based Geometric Change Detection Given a 3D Model," in IEEE Int. Conf. Robot. Autom. (ICRA), 2018, pp. 6308–6315. doi: 10.1109/ICRA.2018.
 8461019 [[paper]](https://ieeexplore.ieee.org/document/8461019) [[code]](https://github.com/PRBonn/fast_change_detection)
