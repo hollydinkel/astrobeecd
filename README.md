@@ -5,6 +5,8 @@
   <a href="https://github.com/hollydinkel/astrobeecd/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
     <img src="https://img.shields.io/github/actions/workflow/status/hollydinkel/astrobeecd/build.yml?branch=master">
   </a>
+  <a href='https://arxiv.org/pdf/2311.02558'><img src='https://img.shields.io/badge/ArXiv-2311.02558-red'>
+  </a> 
 </p>
 
 This repository contains the code for AstrobeeCD, a system for 3D scene change detection toward near-real-time environmental awareness of space outposts using the Astrobee free-flying robot in microgravity. A set of image and depth data from one time step is used to reconstruct a 3D model of the environment. The 3D model is used as the basis for comparison for free-flyer environment surveys at future time steps, where an image-based change detection algorithm identifies inconsistencies against the 3D model. Change detection is demonstrated using real image and pose data collected by an Astrobee robot in space on the International Space Station and on earth in the NASA Ames Research Center Granite Lab.
