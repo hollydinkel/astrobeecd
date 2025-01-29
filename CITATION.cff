@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+authors:
+  - family-names: Dinkel
+    given-names: Holly
+  - family-names: Di
+    given-names: Julia
+  - family-names: Santos
+    given-names: Jamie
+  - family-names: Albee
+    given-names: Keenan
+  - family-names: Borges
+    given-names: Paulo V.K.
+  - family-names: Gouveia Moreira
+    given-names: Marina
+  - family-names: Soussan
+    given-names: Ryan
+  - family-names: Alexandrov
+    given-names: Oleg
+  - family-names: Coltin
+    given-names: Brian
+  - family-names: Smith
+    given-names: Trey
+title: "AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots"
+version: 1.0.0
+url: "https://www.sciencedirect.com/science/article/pii/S0094576524003539"
+date-released: '2024-06-24'
+preferred-citation:
+  authors:
+  - family-names: Dinkel
+    given-names: Holly
+  - family-names: Di
+    given-names: Julia
+  - family-names: Santos
+    given-names: Jamie
+  - family-names: Albee
+    given-names: Keenan
+  - family-names: Borges
+    given-names: Paulo V.K.
+  - family-names: Gouveia Moreira
+    given-names: Marina
+  - family-names: Soussan
+    given-names: Ryan
+  - family-names: Alexandrov
+    given-names: Oleg
+  - family-names: Coltin
+    given-names: Brian
+  - family-names: Smith
+    given-names: Trey
+  title: "AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots"
+  url: "https://www.sciencedirect.com/science/article/pii/S0094576524003539"
+  year: 2024
+  collection-title: "Acta Astronautica"
