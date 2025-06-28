@@ -1,5 +1,5 @@
 # AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots
-**Published in Acta Astronautica ([ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0094576524003539))**
+**Published in Acta Astronautica ([ScienceDirect](https://doi.org/10.1016/j.actaastro.2024.06.037))**
 
 <p>
   <a href="https://github.com/hollydinkel/astrobeecd/actions/workflows/build.yml?query=branch%3Amaster" alt="GitHub Actions">
@@ -34,7 +34,7 @@ The [supplementary video](https://www.youtube.com/watch?v=VfjV-zwFEtU) describes
 ```bash
 @ARTICLE{dinkel2024astrobeecd,
     author = {Dinkel, Holly and Di, Julia and Santos, Jamie and Albee, Keenan and Borges, Paulo V.K. and Gouveia Moreira, Marina and Soussan, Ryan and Alexandrov, Oleg and Coltin, Brian and Smith, Trey},
-    title = {AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots},
+    title = {\href{https://doi.org/10.1016/j.actaastro.2024.06.037}{AstrobeeCD: Change Detection in Microgravity with Free-Flying Robots}},
     journal= {Acta Astronautica},
     volume = {223},
     pages = {98-107},
